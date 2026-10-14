@@ -17,7 +17,9 @@ jobs:
           cache-dependency-path: GroundJoin/pom.xml
       - run: mvn --batch-mode clean package
         working-directory: GroundJoin
+      - run: ls -la GroundJoin/target
       - uses: actions/upload-artifact@v4
         with:
           name: GroundJoin
-          path: GroundJoin/target/GroundJoin-1.0.jar
+          path: GroundJoin/target/GroundJoin-*.jar
+          if-no-files-found: error
